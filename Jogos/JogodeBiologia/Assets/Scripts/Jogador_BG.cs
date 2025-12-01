@@ -31,11 +31,10 @@ public class Jogador_BG : MonoBehaviour
 
     public Text pontosText;
 
+    //Cria uma variável que define o componente de animação ativo
     public Animator animatorCompoment;
 
     public GameObject BotaoReiniciar;
-
-    public InputAction AcaoAbaixar;
 
     void Update()
     {
@@ -46,53 +45,60 @@ public class Jogador_BG : MonoBehaviour
         pontosText.text = $"Pontos: {Mathf.FloorToInt(pontos)}";
 
         //Executa o método Pular() caso a seta para cima seja apertada nesse frame
-        //if (Input.GetKeyDown(KeyCode.UpArrow))
-        //{
-        //    Pular();
-        //}
+        /*if (pular.WasPressedThisFrame())
+        {
+            Pular();
+        }
 
         //Executa o método Abaixar() caso a seta para baixo seja apertada nesse frame
-        //if (Input.GetKeyDown(KeyCode.DownArrow))
-        //{
-        //    Abaixar();
-
-            //Se não está no chão, cria a força da descida rápida dependendo do valor da forçaDescidaRapida
-        //    if (estaNoChao == false)
-        //    {
-        //        rb.AddForce(Vector2.down * forcaDescidaRapida);
-        //    }
-        //}
+        if (abaixar.IsPressed())
+        {
+            Abaixar();
+        }
 
         //Executa o método Levantar() caso a ação abaixar deixe de ser realizada nesse frame
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (abaixar.WasReleasedThisFrame())
         {
             Levantar();
-        }
+        }*/
     }
 
-    public void Pular()
+    //Metódo que será executado caso a AcaoPular do InputSystem aconteça
+    public void OnPular(InputAction.CallbackContext context)
     {
-        if (estaNoChao)
+        if (context.performed && estaNoChao)
         {
             //Cria a força de pulo para cima dependendo do valor da forçaPulo
             rb.AddForce(Vector2.up * forcaPulo);
         }
     }
 
-    //Ativa o estado abaixado na animação
-    public void Abaixar()
+    //Metódo que será executado caso a AcaoAbaixar do InputSystem aconteça
+    public void OnAbaixar(InputAction.CallbackContext context)
     {
-        animatorCompoment.SetBool("Abaixado", true);
-        if (estaNoChao == false)
+        //Ativa se a AcaoAbaixar aconteceu nesse frame
+        if (context.performed)
         {
-            rb.AddForce(Vector2.down * forcaDescidaRapida);
+            //Ativa o estado abaixado na animação
+            animatorCompoment.SetBool("Abaixado", true);
+
+            //Se não está no chão, cria a força da descida rápida dependendo do valor da forçaDescidaRapida
+            if (estaNoChao == false)
+            {
+                rb.AddForce(Vector2.down * forcaDescidaRapida);
+            }
         }
     }
 
-    //Ativa o estado levantado da animação
-    public void Levantar()
+    //Metódo que será executado caso a AcaoAbaixar do InputSystem aconteça
+    public void OnLevantar(InputAction.CallbackContext context)
     {
-        animatorCompoment.SetBool("Abaixado", false);
+        //Ativa se a acaoAbaixar parou de ser realizada nesse frame
+        if (context.canceled)
+        {
+            //Ativa o estado levantado da animação
+            animatorCompoment.SetBool("Abaixado", false);
+        }
     }
 
     void FixedUpdate()
