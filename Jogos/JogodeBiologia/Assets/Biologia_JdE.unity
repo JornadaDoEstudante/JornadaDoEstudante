@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Jogador
   rb: {fileID: 1128796483}
-  forcaPulo: 325
+  forcaPulo: 650
   forcaDescidaRapida: 350
   layerChao:
     serializedVersion: 2
@@ -838,47 +838,6 @@ MonoBehaviour:
   pontosText: {fileID: 356515555}
   animatorCompoment: {fileID: 1128796486}
   BotaoReiniciar: {fileID: 1469385180}
-  AcaoAbaixar:
-    m_Name: Acao Abaixar
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: b810918a-9e39-4672-b0ca-f16b5f479183
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: da67c71a-b5c2-463a-9e1e-fc209b35c704
-      m_Path: <Gamepad>/dpad
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Acao Abaixar
-      m_Flags: 0
-    - m_Name: 
-      m_Id: b5863d7c-fb19-426a-9783-a7a79e8bac65
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Acao Abaixar
-      m_Flags: 0
-    - m_Name: 
-      m_Id: e875c86f-771b-473b-b7da-f7f4b0ba8c40
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Acao Abaixar
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 713b773c-0878-4da9-9ae8-d67d6252378b
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Acao Abaixar
-      m_Flags: 0
-    m_Flags: 0
 --- !u!50 &1128796483
 Rigidbody2D:
   serializedVersion: 5
@@ -1029,27 +988,15 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1128796480}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 6fe0a00b-a076-41d6-a4d4-10d366369d5a
     m_ActionName: 'Jogador/Movimento[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1128796481}
-        m_TargetAssemblyTypeName: Jogador, Assembly-CSharp
-        m_MethodName: Pular
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Jogador_BG, Assembly-CSharp
+        m_MethodName: OnPular
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1063,9 +1010,9 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1128796481}
-        m_TargetAssemblyTypeName: Jogador, Assembly-CSharp
-        m_MethodName: Abaixar
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Jogador_BG, Assembly-CSharp
+        m_MethodName: OnAbaixar
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1075,9 +1022,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1128796481}
-        m_TargetAssemblyTypeName: Jogador, Assembly-CSharp
-        m_MethodName: Levantar
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Jogador_BG, Assembly-CSharp
+        m_MethodName: OnLevantar
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1085,7 +1032,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
     m_ActionId: a21a8195-46fd-47e3-b177-54bf3b6ccff7
     m_ActionName: 'Jogador/AcaoAbaixar[/XInputControllerWindows/leftStick/down,/XInputControllerWindows/dpad/down,/Keyboard/downArrow,/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0
