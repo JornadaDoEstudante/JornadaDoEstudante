@@ -32,6 +32,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interagir",
+                    "type": "Button",
+                    "id": "0a8affd3-387d-455d-ba68-e26846260cef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -340,6 +349,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "AcaoAbaixar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64a6f11f-49b6-4bd2-aa8a-62a91843ed89",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interagir",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8f9e9bb-47dc-4ffe-8339-014d6394240a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interagir",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

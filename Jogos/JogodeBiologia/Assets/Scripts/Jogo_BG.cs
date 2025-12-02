@@ -19,13 +19,6 @@ public class Jogo_BG : MonoBehaviour
         );
     }
 
-    public void ReiniciarJogo()
-    {
-        //Reinicia a cena atual
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        //Volta o tempo para a configuração padrão
-        Time.timeScale = 1;
-    }
+    
 
 }

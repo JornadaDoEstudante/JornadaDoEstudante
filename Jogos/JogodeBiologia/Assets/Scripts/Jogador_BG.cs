@@ -4,6 +4,7 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Jogador_BG : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class Jogador_BG : MonoBehaviour
 
     public GameObject BotaoReiniciar;
 
+    private bool morto = false;
+
     void Update()
     {
         //Aumenta a pontuação ao decorrer do tempo
@@ -44,23 +47,25 @@ public class Jogador_BG : MonoBehaviour
         //Converte a pontuação arredondada para String
         pontosText.text = $"Pontos: {Mathf.FloorToInt(pontos)}";
 
-        //Executa o método Pular() caso a seta para cima seja apertada nesse frame
-        /*if (pular.WasPressedThisFrame())
+
+        //Quando o jogador não está no chão o sprite parado é ativado
+        if (estaNoChao && morto == false)
         {
-            Pular();
+            animatorCompoment.SetBool("Parado", false);
         }
 
-        //Executa o método Abaixar() caso a seta para baixo seja apertada nesse frame
-        if (abaixar.IsPressed())
+        else if (morto == false)
         {
-            Abaixar();
+            animatorCompoment.SetBool("Parado", true);
         }
 
-        //Executa o método Levantar() caso a ação abaixar deixe de ser realizada nesse frame
-        if (abaixar.WasReleasedThisFrame())
+        if (morto)
         {
-            Levantar();
-        }*/
+            //Ativa o sprite de morto
+            animatorCompoment.SetBool("Morto", true);
+            animatorCompoment.SetBool("Parado", false);
+            animatorCompoment.SetBool("Abaixado", false);
+        }
     }
 
     //Metódo que será executado caso a AcaoPular do InputSystem aconteça
@@ -77,16 +82,17 @@ public class Jogador_BG : MonoBehaviour
     public void OnAbaixar(InputAction.CallbackContext context)
     {
         //Ativa se a AcaoAbaixar aconteceu nesse frame
-        if (context.performed)
+        if (context.performed && morto == false)
         {
-            //Ativa o estado abaixado na animação
-            animatorCompoment.SetBool("Abaixado", true);
+                //Ativa o estado abaixado na animação
+                animatorCompoment.SetBool("Abaixado", true);
 
-            //Se não está no chão, cria a força da descida rápida dependendo do valor da forçaDescidaRapida
-            if (estaNoChao == false)
-            {
-                rb.AddForce(Vector2.down * forcaDescidaRapida);
-            }
+                //Se não está no chão, cria a força da descida rápida dependendo do valor da forçaDescidaRapida
+                if (estaNoChao == false)
+                {
+                    rb.AddForce(Vector2.down * forcaDescidaRapida);
+                }
+
         }
     }
 
@@ -94,7 +100,7 @@ public class Jogador_BG : MonoBehaviour
     public void OnLevantar(InputAction.CallbackContext context)
     {
         //Ativa se a acaoAbaixar parou de ser realizada nesse frame
-        if (context.canceled)
+        if (context.canceled && morto == false)
         {
             //Ativa o estado levantado da animação
             animatorCompoment.SetBool("Abaixado", false);
@@ -119,6 +125,20 @@ public class Jogador_BG : MonoBehaviour
 
             //Congela o jogo
             Time.timeScale = 0;
+
+            morto = true;
+        }
+    }
+
+    public void ReiniciarJogo()
+    {
+        if (morto)
+        {
+            //Reinicia a cena atual
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+            //Volta o tempo para a configuração padrão
+            Time.timeScale = 1;
         }
     }
 }

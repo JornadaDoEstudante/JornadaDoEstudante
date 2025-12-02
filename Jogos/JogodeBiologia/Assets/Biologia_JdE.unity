@@ -932,7 +932,7 @@ Transform:
   m_GameObject: {fileID: 1128796480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.9, y: -0.006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1035,6 +1035,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a21a8195-46fd-47e3-b177-54bf3b6ccff7
     m_ActionName: 'Jogador/AcaoAbaixar[/XInputControllerWindows/leftStick/down,/XInputControllerWindows/dpad/down,/Keyboard/downArrow,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1128796481}
+        m_TargetAssemblyTypeName: Jogador_BG, Assembly-CSharp
+        m_MethodName: ReiniciarJogo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0a8affd3-387d-455d-ba68-e26846260cef
+    m_ActionName: 'Jogador/Interagir[/XInputControllerWindows/buttonSouth,/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Jogador
@@ -1269,8 +1285,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 748748691}
-        m_TargetAssemblyTypeName: Jogo, Assembly-CSharp
+      - m_Target: {fileID: 1128796481}
+        m_TargetAssemblyTypeName: Jogador_BG, Assembly-CSharp
         m_MethodName: ReiniciarJogo
         m_Mode: 1
         m_Arguments:
